@@ -1,0 +1,90 @@
+:root {
+    --primary: #2c3e50;
+    --secondary: #3498db;
+    --background: #e5ddd5;
+    --card-bg: #ffffff;
+    --text-dark: #2c3e50;
+    --text-light: #ffffff;
+    --message-bg: #f9f9f9;
+    --sender-bg: #dcf8c6;
+    --hover-bg: #075e54;
+    --input-bg: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--background);
+    color: var(--text-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-size: 1rem; /* Default text size */
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 600px;
+    padding: 2rem;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Title */
+h2 {
+    font-size: 2rem; /* Larger title font */
+    font-weight: 600; /* Bold */
+    color: var(--primary);
+    margin-bottom: 2rem;
+}
+
+/* Button Container */
+.button-container {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    justify-content: space-between;
+}
+
+/* Button Style */
+.btn-action {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: var(--secondary);
+    color: var(--text-light);
+    text-decoration: none;
+    border-radius: 6px;
+    text-align: center;
+    width: 45%; /* Make sure buttons are equally sized */
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+    font-weight: 500; /* Set font weight */
+}
+
+.btn-action:hover {
+    background-color: var(--hover-bg);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 1.5rem;
+        max-width: 90%;
+    }
+
+    .btn-action {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+}

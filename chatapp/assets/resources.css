@@ -1,0 +1,163 @@
+:root {
+    --primary: #2c3e50;
+    --secondary: #3498db;
+    --background: #e5ddd5;
+    --card-bg: #ffffff;
+    --text-dark: #2c3e50;
+    --text-light: #ffffff;
+    --message-bg: #f9f9f9;
+    --sender-bg: #dcf8c6;
+    --hover-bg: #075e54;
+    --input-bg: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--background);
+    color: var(--text-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 800px;
+    padding: 2rem;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2 {
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+
+/* Table for Resources */
+.resources-table {
+    width: 100%;
+    margin-top: 2rem;
+    border-collapse: collapse; /* Ensure table borders collapse */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Add shadow to table */
+}
+
+.resources-table th,
+.resources-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd; /* Light grey border for table rows */
+}
+
+.resources-table th {
+    background-color: var(--primary);
+    color: var(--text-light);
+    font-weight: bold;
+}
+
+.resources-table td {
+    background-color: var(--card-bg);
+    color: var(--text-dark);
+}
+
+.resources-table td a {
+    color: var(--secondary);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+.resources-table td a:hover {
+    background-color: var(--hover-bg);
+    color: var(--text-light);
+}
+
+/* Form elements */
+label {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    display: block;
+    font-weight: bold;
+}
+
+select, input[type="file"] {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+select:focus, input[type="file"]:focus {
+    border: 1px solid var(--secondary);
+}
+
+button {
+    padding: 1rem 2rem;
+    background-color: var(--secondary);
+    color: var(--text-light);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--hover-bg);
+}
+
+/* Error Message */
+.error-message {
+    color: red;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* Back Button */
+.btn-back {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: var(--primary);
+    color: var(--text-light);
+    text-decoration: none;
+    border-radius: 6px;
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.btn-back:hover {
+    background-color: var(--secondary);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 1.5rem;
+        max-width: 100%;
+    }
+
+    .resources-table th,
+    .resources-table td {
+        padding: 8px;
+    }
+
+    .resources-table {
+        width: 100%;
+    }
+}

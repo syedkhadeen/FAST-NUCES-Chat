@@ -1,0 +1,256 @@
+:root {
+    --primary: #2c3e50;
+    --secondary: #3498db;
+    --background: #e5ddd5;
+    --card-bg: #ffffff;
+    --text-dark: #2c3e50;
+    --text-light: #ffffff;
+    --message-bg: #f9f9f9;
+    --sender-bg: #dcf8c6; /* Light green for sender */
+    --receiver-bg: #ffffff; /* White for receiver */
+    --hover-bg: #075e54;
+    --input-bg: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--background);
+    color: var(--text-dark);
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+aside.sidebar {
+    width: 300px;
+    background-color: var(--primary);
+    color: var(--text-light);
+    padding: 2rem 1rem;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
+    flex-shrink: 0;
+    height: 100vh;
+    overflow-y: auto;
+    position: sticky;
+    top: 0;
+}
+
+aside .brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+aside .user-name {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: var(--text-light);
+}
+
+.menu h4 {
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+.menu a {
+    display: block;
+    padding: 0.8rem 1rem;
+    color: var(--text-light);
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+.menu a:hover, .menu a.active {
+    background-color: var(--hover-bg);
+}
+
+/* Main Content Area (Right) */
+.main-content {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Card */
+.card {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Error Messages */
+.error {
+    color: red;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* Chat Box */
+.chat-box {
+    background-color: var(--message-bg);
+    height: 400px; /* Fixed height for the chat box */
+    overflow-y: auto; /* Enable scrolling when messages exceed the height */
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column; /* Stack messages from top to bottom */
+}
+
+/* Sent Messages (right side) */
+.chat-box p.you {
+    background-color: var(--sender-bg);
+    color: #333;
+    text-align: right;
+    margin-left: auto;
+    border-radius: 15px 15px 0 15px;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    max-width: 80%;
+}
+
+/* Received Messages (left side) */
+.chat-box p.them {
+    background-color: var(--receiver-bg);
+    color: #333;
+    text-align: left; /* Align to the left */
+    margin-right: auto; /* Ensure it stays on the left */
+    border-radius: 15px 15px 0 ; /* Rounded on top-left, top-right, bottom-right, flat on bottom-left */
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    max-width: 80%;
+}
+
+/* File Sharing Links */
+.chat-box a {
+    color: var(--secondary);
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.chat-box a:hover {
+    text-decoration: underline;
+}
+
+/* Message Input Area */
+.message-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 1rem;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: var(--input-bg);
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    position: relative;
+}
+
+textarea {
+    flex: 1;
+    border: none;
+    padding: 10px 40px 10px 10px;
+    font-size: 1rem;
+    resize: none;
+    background-color: var(--input-bg);
+    outline: none;
+    min-height: 40px;
+    max-height: 120px;
+    overflow-y: auto;
+}
+
+textarea:focus {
+    border: 1px solid var(--secondary);
+}
+
+/* Attach button (inside textarea) */
+.btn-attach {
+    background-color: transparent;
+    color: var(--primary);
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 5px;
+}
+
+.btn-attach svg {
+    width: 16px;
+    height: 16px;
+}
+
+.btn-attach:hover {
+    color: var(--secondary);
+}
+
+/* Send button */
+.btn-send {
+    background-color: var(--secondary);
+    color: var(--text-light);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 8px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+}
+
+.btn-send svg {
+    width: 16px;
+    height: 16px;
+}
+
+.btn-send:hover {
+    background-color: var(--hover-bg);
+}
+
+/* Back to Dashboard Button */
+a.btn-back {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: var(--primary);
+    color: var(--text-light);
+    text-decoration: none;
+    border-radius: 6px;
+    text-align: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+a.btn-back:hover {
+    background-color: var(--secondary);
+}
+
+/* File Input */
+.file-input {
+    display: none;
+}

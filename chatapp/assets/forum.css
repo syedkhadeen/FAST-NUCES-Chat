@@ -1,0 +1,353 @@
+:root {
+    --primary: #2c3e50;
+    --secondary: #3498db;
+    --background: #e5ddd5;
+    --card-bg: #ffffff;
+    --text-dark: #2c3e50;
+    --text-light: #ffffff;
+    --message-bg: #f9f9f9;
+    --sender-bg: #dcf8c6;
+    --hover-bg: #075e54;
+    --input-bg: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--background);
+    color: var(--text-dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Container for Forum and Post */
+.container {
+    width: 100%;
+    max-width: 800px;
+    padding: 2rem;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Title */
+h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 2rem;
+}
+
+/* Forum List Section */
+.forum-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.forum-list li {
+    background-color: var(--message-bg);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.forum-list a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+}
+
+.forum-list p {
+    color: var(--text-dark);
+    margin-top: 0.5rem;
+}
+
+/* Create Forum Button */
+#createForumBtn {
+    padding: 1rem 2rem;
+    background-color: var(--secondary);
+    color: var(--text-light);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 1rem;
+    width: 100%;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+}
+
+#createForumBtn:hover {
+    background-color: var(--hover-bg);
+}
+
+/* Create Forum Modal */
+#createForumModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background: var(--card-bg);
+    margin: 15% auto;
+    padding: 2rem;
+    width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.close-btn {
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    cursor: pointer;
+    float: right;
+}
+
+.close-btn:hover {
+    color: var(--secondary);
+}
+
+/* Create Post Form */
+.create-post-form {
+    margin-top: 2rem;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    resize: none;
+    min-height: 100px;
+}
+
+textarea:focus {
+    border-color: var(--secondary);
+}
+
+.btn-send {
+    padding: 1rem 2rem;
+    background-color: var(--secondary);
+    color: var(--text-light);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;
+}
+
+.btn-send:hover {
+    background-color: var(--hover-bg);
+}
+
+/* Error Message */
+.error-message {
+    color: red;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* Back Button */
+a.btn-back {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: var(--primary);
+    color: var(--text-light);
+    text-decoration: none;
+    border-radius: 6px;
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+a.btn-back:hover {
+    background-color: var(--secondary);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 1.5rem;
+        max-width: 90%;
+    }
+
+    .btn-send {
+        width: 100%;
+    }
+
+    .modal-content {
+        width: 90%;
+    }
+}
+
+
+:root {
+    --primary: #2c3e50;
+    --secondary: #3498db;
+    --background: #e5ddd5;
+    --card-bg: #ffffff;
+    --text-dark: #2c3e50;
+    --text-light: #ffffff;
+    --message-bg: #f9f9f9;
+    --sender-bg: #dcf8c6;
+    --hover-bg: #075e54;
+    --input-bg: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--background);
+    color: var(--text-dark);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 1rem;
+}
+
+/* Container for the forum page */
+.container {
+    width: 100%;
+    max-width: 800px;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Title */
+h2 {
+    font-size: 2rem;
+    color: var(--primary);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+/* Forum Posts */
+.forum-posts {
+    list-style-type: none;
+    padding: 0;
+}
+
+.forum-post {
+    background-color: var(--message-bg);
+    padding: 1.2rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.forum-post strong {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.forum-post p {
+    color: var(--text-dark);
+    margin-top: 0.5rem;
+}
+
+.forum-post .post-date {
+    font-size: 0.9rem;
+    color: #777;
+    margin-top: 0.5rem;
+}
+
+/* Create Post Section */
+.create-post-section {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    resize: none;
+    min-height: 100px;
+}
+
+textarea:focus {
+    border-color: var(--secondary);
+}
+
+.create-post-section button {
+    background-color: var(--secondary);
+    color: var(--text-light);
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.create-post-section button:hover {
+    background-color: var(--hover-bg);
+}
+
+/* Back Button */
+a.btn-back {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: var(--primary);
+    color: var(--text-light);
+    text-decoration: none;
+    border-radius: 6px;
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+a.btn-back:hover {
+    background-color: var(--secondary);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 1.5rem;
+        max-width: 100%;
+    }
+
+    .create-post-section button {
+        width: 100%;
+    }
+
+    .modal-content {
+        width: 90%;
+    }
+}
+
