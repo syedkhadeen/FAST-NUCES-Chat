@@ -62,7 +62,14 @@ Database connection details are managed in a configuration file.
     # chown -R your_user:www-data chatapp/uploads
     ```
     (Consult your specific server setup documentation if needed).
-6.  **Run:** Ensure your web server (e.g., Apache, Nginx) is running. Access the application by navigating to the URL configured in your web server setup (e.g., `http://localhost/` or `http://localhost/chatapp/` depending on your configuration). You should be redirected to the login page (`chatapp/login.php`).
+6.  **Run the Application:**
+    *   **Option A (Using a full web server like Apache/Nginx):** Ensure your configured web server is running. Access the application by navigating to the URL you configured (e.g., `http://localhost/` or `http://localhost/chatapp/`).
+    *   **Option B (Using PHP's built-in server - for development only):**
+        *   Navigate to the project's root directory in your terminal.
+        *   Run the command: `php -S localhost:8000 -t chatapp/`
+        *   Access the application in your browser at `http://localhost:8000`. You should be redirected to the login page. (Note: The `chatapp/` directory is specified as the document root using `-t`).
+
+    Regardless of the method, you should be redirected to the login page (`login.php`).
 
 ### Deployment (General Steps for Online Hosting)
 
