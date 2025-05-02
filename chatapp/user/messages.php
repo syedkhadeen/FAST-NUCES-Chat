@@ -11,6 +11,7 @@ if (!isset($_SESSION['user_id'])) {
 $current_user = $_SESSION['user_id'];
 $user_name = $_SESSION['user_name'];
 $receiver_id = isset($_GET['to']) ? intval($_GET['to']) : null;
+$error = null; // Initialize error variable
 
 // Get all users to chat with (excluding self)
 $stmt = $conn->prepare("SELECT id, name FROM users WHERE id != ?");

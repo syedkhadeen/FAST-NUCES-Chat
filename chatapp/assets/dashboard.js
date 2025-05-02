@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const div = document.createElement('div');
         div.className = 'chat-user';
         div.innerHTML = `
-            <img src="../uploads/profile/${user.profile_pic || 'default.jpg'}" alt="${escapeHtml(user.name)}" class="profile-img">
+            <img src="../uploads/profile/${user.profile_pic || 'default.png'}" alt="${escapeHtml(user.name)}" class="profile-img">
             <div class="user-info">
                 <h4>${escapeHtml(user.name)}</h4>
                 <small>${user.status || 'offline'}</small>
@@ -215,7 +215,7 @@ function createPostElement(post) {
     
     div.innerHTML = `
         <div class="post-header">
-            <img src="../uploads/profile/default.jpg" alt="Profile" class="post-profile-img">
+            <img src="../uploads/profile/default.png" alt="Profile" class="post-profile-img">
             <div>
                 <div class="post-author">${escapeHtml(post.author_name)}</div>
                 <div class="post-time">Just now</div>

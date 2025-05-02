@@ -1,17 +1,34 @@
 -- Consolidated Database Setup Script for FAST-NUCES Chat App
--- Target Database: chat_university_structure
+-- Target Database: web_lab
 
 -- Create the database if it doesn't exist
-CREATE DATABASE IF NOT EXISTS `chat_university_structure` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE IF NOT EXISTS `web_lab` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- Use the database
-USE `chat_university_structure`;
+USE `web_lab`;
 
 --
 -- Table structure for table `users`
 -- (Combined definition from chat_university_structure.sql and setup_db.php)
 --
+-- Drop tables in an order that respects foreign key constraints
+DROP TABLE IF EXISTS `forum_comments`;
+DROP TABLE IF EXISTS `likes`;
+DROP TABLE IF EXISTS `comments`;
+DROP TABLE IF EXISTS `group_memberships`;
+DROP TABLE IF EXISTS `group_messages`;
+DROP TABLE IF EXISTS `messages`;
+DROP TABLE IF EXISTS `resources`;
+DROP TABLE IF EXISTS `forum_posts`;
+DROP TABLE IF EXISTS `posts`;
+DROP TABLE IF EXISTS `forums`;
+DROP TABLE IF EXISTS `groups`;
 DROP TABLE IF EXISTS `users`;
+
+--
+-- Table structure for table `users`
+-- (Combined definition from chat_university_structure.sql and setup_db.php)
+--
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
@@ -20,7 +37,7 @@ CREATE TABLE `users` (
   `status` enum('online','offline') DEFAULT 'offline',
   `created_at` timestamp NULL DEFAULT current_timestamp(),
   `bio` text DEFAULT NULL,                     -- Added from setup_db.php
-  `profile_pic` varchar(255) DEFAULT 'default.jpg', -- Added from setup_db.php
+  `profile_pic` varchar(255) DEFAULT 'default.png', -- Added from setup_db.php, updated default
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -28,7 +45,6 @@ CREATE TABLE `users` (
 --
 -- Table structure for table `groups`
 --
-DROP TABLE IF EXISTS `groups`;
 CREATE TABLE `groups` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `group_name` varchar(100) NOT NULL,
@@ -42,7 +58,6 @@ CREATE TABLE `groups` (
 --
 -- Table structure for table `group_memberships`
 --
-DROP TABLE IF EXISTS `group_memberships`;
 CREATE TABLE `group_memberships` (
   `group_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -56,7 +71,6 @@ CREATE TABLE `group_memberships` (
 --
 -- Table structure for table `group_messages`
 --
-DROP TABLE IF EXISTS `group_messages`;
 CREATE TABLE `group_messages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `group_id` int(11) NOT NULL,
@@ -75,7 +89,6 @@ CREATE TABLE `group_messages` (
 --
 -- Table structure for table `messages`
 --
-DROP TABLE IF EXISTS `messages`;
 CREATE TABLE `messages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `sender_id` int(11) NOT NULL,
@@ -94,7 +107,6 @@ CREATE TABLE `messages` (
 --
 -- Table structure for table `forums`
 --
-DROP TABLE IF EXISTS `forums`;
 CREATE TABLE `forums` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
@@ -109,7 +121,6 @@ CREATE TABLE `forums` (
 --
 -- Table structure for table `forum_posts`
 --
-DROP TABLE IF EXISTS `forum_posts`;
 CREATE TABLE `forum_posts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `forum_id` int(11) NOT NULL,
@@ -126,7 +137,6 @@ CREATE TABLE `forum_posts` (
 --
 -- Table structure for table `forum_comments`
 --
-DROP TABLE IF EXISTS `forum_comments`;
 CREATE TABLE `forum_comments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `post_id` int(11) NOT NULL,
@@ -143,7 +153,6 @@ CREATE TABLE `forum_comments` (
 --
 -- Table structure for table `resources`
 --
-DROP TABLE IF EXISTS `resources`;
 CREATE TABLE `resources` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
@@ -163,7 +172,6 @@ CREATE TABLE `resources` (
 -- Table structure for table `posts`
 -- (Definition from setup_db.php / setup_tables.sql)
 --
-DROP TABLE IF EXISTS `posts`;
 CREATE TABLE `posts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
@@ -179,7 +187,6 @@ CREATE TABLE `posts` (
 -- Table structure for table `likes`
 -- (Definition from setup_db.php / setup_tables.sql)
 --
-DROP TABLE IF EXISTS `likes`;
 CREATE TABLE `likes` (
   `id` int(11) NOT NULL AUTO_INCREMENT, -- Changed from INT PRIMARY KEY AUTO_INCREMENT
   `post_id` int(11) NOT NULL,
@@ -196,7 +203,6 @@ CREATE TABLE `likes` (
 -- Table structure for table `comments`
 -- (Definition from setup_db.php / setup_tables.sql)
 --
-DROP TABLE IF EXISTS `comments`;
 CREATE TABLE `comments` (
   `id` int(11) NOT NULL AUTO_INCREMENT, -- Changed from INT PRIMARY KEY AUTO_INCREMENT
   `post_id` int(11) NOT NULL,
@@ -209,6 +215,11 @@ CREATE TABLE `comments` (
   CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`) ON DELETE CASCADE,
   CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) -- Removed ON DELETE CASCADE for user_id
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Note: The `forum_threads` table from chat_university_structure.sql was omitted as it didn't seem to be referenced elsewhere.
+-- Note: The `group_members` table from chat_university_structure.sql was omitted as `group_memberships` seems to serve the purpose.
+
+-- End of consolidated setup script.
 
 -- Note: The `forum_threads` table from chat_university_structure.sql was omitted as it didn't seem to be referenced elsewhere.
 -- Note: The `group_members` table from chat_university_structure.sql was omitted as `group_memberships` seems to serve the purpose.

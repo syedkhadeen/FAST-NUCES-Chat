@@ -17,7 +17,7 @@ $user = $user_query->get_result()->fetch_assoc();
 
 if (!$user) {
     // User doesn't exist, create one
-    $insert_user = $conn->prepare("INSERT INTO users (id, name, email, password, status, profile_pic) VALUES (?, ?, ?, ?, 'online', 'default.jpg')");
+    $insert_user = $conn->prepare("INSERT INTO users (id, name, email, password, status, profile_pic) VALUES (?, ?, ?, ?, 'online', 'default.png')"); // Updated default
     $email = strtolower(str_replace(' ', '.', $user_name)) . '@example.com';
     $password = password_hash('default_password', PASSWORD_DEFAULT);
     $insert_user->bind_param("isss", $user_id, $user_name, $email, $password);
@@ -26,7 +26,7 @@ if (!$user) {
         $user = [
             'id' => $user_id,
             'name' => $user_name,
-            'profile_pic' => 'default.jpg',
+            'profile_pic' => 'default.png', // Updated default
             'status' => 'online'
         ];
     } else {
@@ -310,7 +310,7 @@ $conn->query($create_table_query);
                 <a href="messages.php">💬 Messages</a>
                 <a href="../groups/group_dashboard.php">👥 Groups</a>
                 <a href="../forum/forums.php">📢 Forums</a>
-                <a href="../resources/resources.php">📚 Resources</a>
+                <a href="../resources/dashboard.php">📚 Resources</a>
                 <a href="../logout.php" onclick="return confirm('Are you sure you want to logout?')">🚪 Logout</a>
             </nav>
         </div>

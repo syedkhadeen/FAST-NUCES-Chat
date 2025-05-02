@@ -5,6 +5,9 @@ ini_set('display_errors', 1);
 // Load configuration
 if (file_exists(__DIR__ . '/../config.php')) {
     require_once __DIR__ . '/../config.php';
+    // <<< ADDED LOGGING >>>
+    error_log("DEBUG: Loaded credentials from config.php: HOST=" . DB_HOST . ", USER=" . DB_USER . ", DB=" . DB_NAME);
+    // <<< END LOGGING >>>
 } else {
     // Fallback or error handling if config.php is missing
     // For now, we'll use default values, but ideally, this should stop execution or use example values.
@@ -13,10 +16,15 @@ if (file_exists(__DIR__ . '/../config.php')) {
     define('DB_NAME', 'chat_university_structure');
     define('DB_USER', 'root');
     define('DB_PASS', '');
-    error_log("WARNING: config.php not found. Using default database credentials.");
+    // <<< MODIFIED LOGGING >>>
+    error_log("ERROR: config.php not found at " . __DIR__ . "/../config.php. Falling back to default credentials.");
+    // <<< END LOGGING >>>
 }
 
 try {
+    // <<< ADDED LOGGING >>>
+    error_log("DEBUG: Attempting DB connection with HOST=" . DB_HOST . ", USER=" . DB_USER . ", DB=" . DB_NAME);
+    // <<< END LOGGING >>>
     // Use defined constants for connection
     $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
