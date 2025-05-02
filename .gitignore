@@ -1,0 +1,16 @@
+# Ignore sensitive configuration files
+chatapp/config.php
+
+# Ignore vendor directories (if any were used, e.g., Composer)
+# vendor/
+
+# Ignore log files
+*.log
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE/editor directories
+.vscode/
+.idea/
