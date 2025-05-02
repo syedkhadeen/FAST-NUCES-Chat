@@ -62,7 +62,7 @@ Database connection details are managed in a configuration file.
     # chown -R your_user:www-data chatapp/uploads
     ```
     (Consult your specific server setup documentation if needed).
-6.  **Access:** Open the application in your web browser via the URL configured in your web server.
+6.  **Run:** Ensure your web server (e.g., Apache, Nginx) is running. Access the application by navigating to the URL configured in your web server setup (e.g., `http://localhost/` or `http://localhost/chatapp/` depending on your configuration). You should be redirected to the login page (`chatapp/login.php`).
 
 ### Deployment (General Steps for Online Hosting)
 
@@ -75,7 +75,7 @@ Deploying to a live host follows similar principles but requires using the host'
     *   Use the host's phpMyAdmin tool to import the `chatapp/setup.sql` script into the newly created database.
 4.  **Configuration:** Create or upload the `chatapp/config.php` file in the `chatapp` directory on the server. Edit it to contain the correct database credentials provided by your host.
 5.  **Permissions:** Use the host's file manager or FTP client to ensure the `chatapp/uploads/` directory (and its subdirectories: `profile`, `posts`, `resources`) are writable by the web server. Permissions like `755` or `775` are often required, but check your host's documentation.
-6.  **Access:** Access your application using the domain or URL provided by your hosting provider.
+6.  **Access:** Access your application using the domain or URL provided by your hosting provider (e.g., `http://yourdomain.com/` or `http://yourdomain.com/chatapp/`). You should be redirected to the login page.
 
 ## Usage
 
