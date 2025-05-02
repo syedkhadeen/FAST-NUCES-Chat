@@ -15,7 +15,7 @@ $current_user = $stmt->get_result()->fetch_assoc();
     <div class="header-content">
         <div class="left-section">
             <a href="profile.php" class="profile-link" onclick="window.location.href='profile.php'; return false;">
-                <img src="uploads/profile/<?php echo htmlspecialchars($current_user['profile_pic']); ?>" alt="Profile" class="header-profile-pic">
+                <img src="/uploads/profile/<?php echo htmlspecialchars($current_user['profile_pic']); ?>" alt="Profile" class="header-profile-pic">
                 <span class="profile-name"><?php echo htmlspecialchars($current_user['name']); ?></span>
             </a>
         </div>
@@ -29,7 +29,7 @@ $current_user = $stmt->get_result()->fetch_assoc();
             <div class="user-menu" id="userMenu">
                 <div class="user-menu-trigger">
                     <a href="/chatapp/chatapp/profile.php" class="profile-menu-link">
-                        <img src="uploads/profile/<?php echo htmlspecialchars($current_user['profile_pic']); ?>" alt="Profile" class="header-profile-pic">
+                        <img src="/uploads/profile/<?php echo htmlspecialchars($current_user['profile_pic']); ?>" alt="Profile" class="header-profile-pic">
                         <span class="dropdown-arrow">▼</span>
                     </a>
                 </div>
