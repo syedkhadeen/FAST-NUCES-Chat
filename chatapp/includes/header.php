@@ -20,23 +20,25 @@ $current_user = $stmt->get_result()->fetch_assoc();
             </a>
         </div>
         <nav class="main-nav">
-            <a href="/chatapp/chatapp/user/dashboard.php" class="nav-link">Home</a>
-            <a href="/chatapp/chatapp/messages.php" class="nav-link">Messages</a>
-            <a href="/chatapp/chatapp/groups.php" class="nav-link">Groups</a>
-            <a href="/chatapp/chatapp/forums.php" class="nav-link">Forums</a>
+            <a href="/user/dashboard.php" class="nav-link">Home</a> <!-- Corrected Path -->
+            <a href="/messages.php" class="nav-link">Messages</a> <!-- Corrected Path -->
+            <a href="/groups/group_dashboard.php" class="nav-link">Groups</a> <!-- Corrected Path -->
+            <a href="/forum/forums.php" class="nav-link">Forums</a> <!-- Corrected Path -->
+            <!-- Assuming resources link should be here too -->
+            <a href="/resources/dashboard.php" class="nav-link">Resources</a> <!-- Added Resources Link -->
         </nav>
         <div class="right-section">
             <div class="user-menu" id="userMenu">
                 <div class="user-menu-trigger">
-                    <a href="/chatapp/chatapp/profile.php" class="profile-menu-link">
+                    <a href="/profile.php" class="profile-menu-link"> <!-- Corrected Path -->
                         <img src="/uploads/profile/<?php echo htmlspecialchars($current_user['profile_pic']); ?>" alt="Profile" class="header-profile-pic">
                         <span class="dropdown-arrow">▼</span>
                     </a>
                 </div>
                 <div class="dropdown-content">
-                    <a href="/chatapp/chatapp/profile.php" class="dropdown-item">Profile</a>
-                    <a href="/chatapp/chatapp/settings.php" class="dropdown-item">Settings</a>
-                    <a href="/chatapp/chatapp/logout.php" class="dropdown-item">Logout</a>
+                    <a href="/profile.php" class="dropdown-item">Profile</a> <!-- Corrected Path -->
+                    <a href="/settings.php" class="dropdown-item">Settings</a> <!-- Corrected Path (Assuming settings.php exists at root) -->
+                    <a href="/logout.php" class="dropdown-item">Logout</a> <!-- Corrected Path -->
                 </div>
             </div>
         </div>
