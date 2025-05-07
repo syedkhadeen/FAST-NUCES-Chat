@@ -70,8 +70,17 @@ Database connection details are managed in a configuration file.
         *   Navigate to the project's root directory in your terminal.
         *   Run the command: `php -S localhost:8000 -t chatapp/`
         *   Access the application in your browser at `http://localhost:8000`. You should be redirected to the login page. (Note: The `chatapp/` directory is specified as the document root using `-t`).
+7.  **Email Verification Setup (PHPMailer):**
+    *   This application uses PHPMailer for sending verification emails. You need to install it using Composer.
+    *   If you don't have Composer installed, download it from [getcomposer.org](https://getcomposer.org).
+    *   Navigate to the project root directory (`FAST-NUCES-Chat`) in your terminal and run:
+        ```bash
+        composer require phpmailer/phpmailer
+        ```
+    *   This will create a `vendor` directory and install PHPMailer. The application is already configured to use the Composer autoloader (`vendor/autoload.php`) in `chatapp/includes/functions.php`.
+    *   **Configure SMTP:** Ensure your Gmail SMTP credentials (specifically the App Password) are correctly set in `chatapp/config.php` as per the comments in that file for `SMTP_USER`, `SMTP_PASS`, etc. You'll need to enable 2-Step Verification on the Gmail account and generate an App Password.
 
-    Regardless of the method, you should be redirected to the login page (`login.php`).k
+    Regardless of the method, you should be redirected to the login page (`login.php`).
 
 ### Deployment (General Steps for Online Hosting)
 
@@ -85,6 +94,9 @@ Deploying to a live host follows similar principles but requires using the host'
 4.  **Configuration:** Create or upload the `chatapp/config.php` file in the `chatapp` directory on the server. Edit it to contain the correct database credentials provided by your host.
 5.  **Permissions:** Use the host's file manager or FTP client to ensure the `chatapp/uploads/` directory (and its subdirectories: `profile`, `posts`, `resources`) are writable by the web server. Permissions like `755` or `775` are often required, but check your host's documentation.
 6.  **Access:** Access your application using the domain or URL provided by your hosting provider (e.g., `http://yourdomain.com/` or `http://yourdomain.com/chatapp/`). You should be redirected to the login page.
+7.  **Email Verification Setup (PHPMailer) on Host:**
+    *   If your host doesn't allow running `composer` directly, you may need to run `composer require phpmailer/phpmailer` locally and then upload the entire `vendor` directory along with your project files.
+    *   Ensure the SMTP settings in `chatapp/config.php` are correct for the email account you intend to use for sending verification emails from the server.
 
 ## Usage
 

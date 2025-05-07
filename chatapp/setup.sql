@@ -38,8 +38,12 @@ CREATE TABLE `users` (
   `created_at` timestamp NULL DEFAULT current_timestamp(),
   `bio` text DEFAULT NULL,                     -- Added from setup_db.php
   `profile_pic` varchar(255) DEFAULT 'default.png', -- Added from setup_db.php, updated default
+  `email_verification_token` varchar(255) DEFAULT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `email_verification_token_expires_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `email` (`email`)
+  UNIQUE KEY `email` (`email`),
+  UNIQUE KEY `email_verification_token` (`email_verification_token`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --

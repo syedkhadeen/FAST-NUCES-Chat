@@ -26,13 +26,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errors[] = "Email already registered.";
         } else {
             $hashed = password_hash($password, PASSWORD_BCRYPT);
-            $insert = $conn->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
-            $insert->bind_param("sss", $name, $email, $hashed);
+            $verification_token = bin2hex(random_bytes(32));
+            $token_expiry = date('Y-m-d H:i:s', strtotime('+24 hours'));
+
+            $insert = $conn->prepare("INSERT INTO users (name, email, password, email_verification_token, email_verification_token_expires_at) VALUES (?, ?, ?, ?, ?)");
+            $insert->bind_param("sssss", $name, $email, $hashed, $verification_token, $token_expiry);
+            
             if ($insert->execute()) {
-                header("Location: register.php?registered=1");
-                exit;
+                if (function_exists('sendVerificationEmail')) {
+                    $emailSent = sendVerificationEmail($email, $verification_token);
+                    if ($emailSent) {
+                        header("Location: register.php?status=verification_sent&email_for_notice=" . urlencode($email));
+                        exit;
+                    } else {
+                        $errors[] = "Registration successful, but we couldn't send a verification email. Please try registering again later or contact support if the problem persists.";
+                    }
+                } else {
+                    $errors[] = "Critical error: Email sending function not found. Please contact support.";
+                }
             } else {
-                $errors[] = "Registration failed. Please try again.";
+                $errors[] = "Registration failed. Please try again. Error: " . $conn->error;
             }
         }
     }
@@ -51,10 +64,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <main class="container">
 
-        <?php if (isset($_GET['registered']) && $_GET['registered'] == 1): ?>
-            <div class="alert alert-success">
-                ✅ Registration successful! You can now <a href="login.php">log in</a>.
-            </div>
+        <?php if (isset($_GET['status'])): ?>
+            <?php if ($_GET['status'] == 'verification_sent'): ?>
+                <div class="alert alert-success">
+                    ✅ Registration successful! A verification email has been sent to <strong><?php echo htmlspecialchars(urldecode($_GET['email_for_notice'] ?? 'your email')); ?></strong>. Please check your inbox (and spam folder) to complete your registration.
+                </div>
+            <?php elseif ($_GET['status'] == 'verified'): ?>
+                <div class="alert alert-success">
+                    ✅ Your email has been successfully verified! You can now <a href="login.php">log in</a>.
+                </div>
+            <?php elseif ($_GET['status'] == 'error' && isset($_GET['message'])): ?>
+                <div class="alert alert-error">
+                    <?php echo htmlspecialchars(urldecode($_GET['message'])); ?>
+                </div>
+            <?php endif; ?>
         <?php endif; ?>
 
         <?php if (!empty($errors)) : ?>

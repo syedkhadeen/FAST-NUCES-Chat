@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($email) || empty($password)) {
         $errors[] = "All fields are required.";
     } else {
-        $stmt = $conn->prepare("SELECT id, name, password FROM users WHERE email = ?");
+        $stmt = $conn->prepare("SELECT id, name, password, email_verified_at FROM users WHERE email = ?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -21,10 +21,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $user = $result->fetch_assoc();
 
             if (password_verify($password, $user['password'])) {
-                $_SESSION['user_id'] = $user['id'];
-                $_SESSION['user_name'] = $user['name'];
-                header("Location: user/dashboard.php");
-                exit;
+                // Removed debug error_log line that caused potential warning
+                if ($user['email_verified_at'] !== null) {
+                    $_SESSION['user_id'] = $user['id'];
+                    $_SESSION['user_name'] = $user['name'];
+                    header("Location: user/dashboard.php");
+                    exit;
+                } else {
+                    $errors[] = "Your email address has not been verified. Please check your email for the verification link. <a href='resend_verification.php?email=" . urlencode($email) . "'>Resend verification email?</a>";
+                }
             } else {
                 $errors[] = "Incorrect password.";
             }
