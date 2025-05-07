@@ -1,5 +1,7 @@
 # FAST-NUCES Chat Application
 
+Link: http://22p9160.rf.gd/
+
 ## Purpose
 
 A web-based chat and collaboration application designed for university students, facilitating communication and resource sharing within the campus community.
@@ -30,7 +32,7 @@ Database connection details are managed in a configuration file.
 2.  **Rename or copy** this file to `chatapp/config.php`.
 3.  Edit `chatapp/config.php` and replace the placeholder values with your actual database credentials:
     *   `DB_HOST`: Your database host (e.g., 'localhost' or a remote host address).
-    *   `DB_NAME`: The name of the database you will use (e.g., 'chat_university_structure').
+    *   `DB_NAME`: The name of the database you will use (e.g., 'web_lab').
     *   `DB_USER`: Your database username.
     *   `DB_PASS`: Your database password.
 4.  **Important:** Ensure `chatapp/config.php` is added to your `.gitignore` file to prevent committing sensitive credentials. A `.gitignore` file is included in the project root for this purpose.
@@ -48,7 +50,7 @@ Database connection details are managed in a configuration file.
 1.  **Clone/Download:** Obtain the project files.
 2.  **Web Server:** Configure your web server to point to the project's root directory (or the `chatapp` subdirectory if you prefer). Ensure PHP is enabled.
 3.  **Database:**
-    *   Create a new database on your MySQL/MariaDB server (e.g., `chat_university_structure`).
+    *   Create a new database on your MySQL/MariaDB server (e.g., `web_lab`).
     *   Import the database schema using the provided consolidated script: `chatapp/setup.sql`. You can do this via phpMyAdmin's "Import" tab or using the command line:
         ```bash
         mysql -u YOUR_DB_USER -p YOUR_DB_NAME < chatapp/setup.sql
@@ -69,7 +71,7 @@ Database connection details are managed in a configuration file.
         *   Run the command: `php -S localhost:8000 -t chatapp/`
         *   Access the application in your browser at `http://localhost:8000`. You should be redirected to the login page. (Note: The `chatapp/` directory is specified as the document root using `-t`).
 
-    Regardless of the method, you should be redirected to the login page (`login.php`).
+    Regardless of the method, you should be redirected to the login page (`login.php`).k
 
 ### Deployment (General Steps for Online Hosting)
 

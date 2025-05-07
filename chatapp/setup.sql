@@ -1,11 +1,11 @@
 -- Consolidated Database Setup Script for FAST-NUCES Chat App
--- Target Database: web_lab
+-- Target Database: if0_38885024_web_lab
 
 -- Create the database if it doesn't exist
-CREATE DATABASE IF NOT EXISTS `web_lab` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE IF NOT EXISTS `if0_38885024_web_lab` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- Use the database
-USE `web_lab`;
+USE `if0_38885024_web_lab`;
 
 --
 -- Table structure for table `users`
